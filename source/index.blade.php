@@ -2,154 +2,83 @@
 
 @section('body')
 
+
 <section>
-    <img class="w-full object-cover border border-gray-400 p-1" src="/assets/img/cover/tents-industrial.jpg" alt="tents-industrial">
+    @foreach($articles->where('title','fetaure article') as $article)
 
-    <p class="text-xl">
-        Robusna konstrukcija, izrađena od aluminijskih profila i vruće cinčanih čeličnih veznih dijelova čini čvrstu osnovu objekta, koji se lako ovisno o potrebama i vrsti upotrebe može koristiti kao industrijski šator ili brzomontažna hala.
-    </p>
+        <img src="{{ $article->img_path }}" alt="{{ $article->title }}" class="border border-gray-400 p-1">
 
-    <p class="m-0">
-        Omogućava Vam tri različite vrste objekata koje pokrivaju opseg od običnih skladišnih prostora do toplinski izoliranih proizvodnih prostora. Najveća je prednost naravno u vrlo jednostavnoj montaži, mobilnosti, iskoristivosti i vrlo dugom radnom vijeku. Najlakši prikaz i opis široke upotrebe industrijskih šatora s aluminijskom konstrukcijom: koriste se kao skladista, pokrivni prostori, jahališta i konjušnice, radionice, dodatni prostori za trgovine, proizvodni pogoni, auto garaže, hangari za zrakoplove..
-    </p>
+        <p class="text-xl">
+            {{ $article->main_paragraph }}
+        </p>
+        <p>
+            {{ $article->paragraph }}
+        </p>
+
+    @endforeach
 </section>
 
 <div class="border-t-2 border-gray-200 my-16"></div>
 
 <section>
-    <h2 class="font-normal">Industrijski šator TIP 1 - PVC / PVC</h2>
+    @foreach($articles->where('category','tent_1') as $article)
+        <h2 class="font-normal">{{ $article->title }}</h2>
 
-    <p class="mb-6">
-        je osnovni model brzomontažnog objekta. U ovoj verziji su stranice i pokrov napravljeni od kvalitetne PVC cerade. Ceradu karakterizira duga upotreba i vijek trajanja do 20 godina.Ova vrsta konstrukcije je primjerena za jednostavne pokrivne i skladišne prostore, gdje temperaturne razlike nisu toliko važne. Za robu i materijale koji su osjetljivi na kondenzat i vlagu, lako se postavlja u unutarnji dio konstrukcije protukondenzacijska cerada, koja štiti od kondenza pri velikim temperaturnim razlikama. Najveća prednost ovog modela je brza dostava, montaža i minimalno održavanje.
-    </p>
+        <p>{{ $article->paragraph }}</p>
+    @endforeach
 
-    <div x-data="{}" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        <div>
-            <a  @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_1/tip1-1.jpg', imgModalDesc: 'Skladištenje metalnih proizvoda i poluproizvoda' })" class="cursor-pointer">
+    <div x-data="{}" class="grid grid-cols-4 gap-10">
+        @foreach($sator_1 as $img)
+            <div>
+                <a @click="$dispatch('img-modal', {  imgModalSrc: '{{ $img->img_path }}', imgModalDesc: '{{ $img->text }}' })" class="cursor-pointer">
+                    <img src="{{ $img->img_path }}" alt="{{ $img->text }}" class="border border-gray-400 p-1">
+                </a>
+                <p class="text-sm m-0 mt-1">{{ $img->text }}</p>
+            </div>
+        @endforeach
+    </div>
+</section>
 
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_1/tip1-1.jpg" alt="sator tip 1">
 
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladištenje metalnih proizvoda i poluproizvoda
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_1/tip1-2.jpg', imgModalDesc: 'Skladište željeznih traka i valjaka' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_1/tip1-2.jpg" alt="sator tip1-2 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladište željeznih traka i valjaka
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_1/tip1-3.jpg', imgModalDesc: 'Dvosistemski skladišni objekt' })" class="cursor-pointer"> 
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_1/tip1-3.jpg" alt="sator tip1-3 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Dvosistemski skladišni objekt
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_1/tip1-4.jpg', imgModalDesc: 'Čuvanje poljoprivredne mehanizacije' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_1/tip1-4.jpg" alt="sator tip1-4 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Čuvanje poljoprivredne mehanizacije
-            </p>
-        </div>
+<div class="border-t-2 border-gray-200 my-16"></div>
+
+<section>
+    @foreach($articles->where('category','tent_2') as $article)
+        <h2 class="font-normal">{{ $article->title }}</h2>
+
+        <p>{{ $article->paragraph }}</p>
+    @endforeach
+
+    <div x-data="{}" class="grid grid-cols-4 gap-10">
+        @foreach($sator_2 as $img)
+            <div>
+                <a @click="$dispatch('img-modal', {  imgModalSrc: '{{ $img->img_path }}', imgModalDesc: '{{ $img->text }}' })" class="cursor-pointer">
+                    <img src="{{ $img->img_path }}" alt="{{ $img->text }}" class="border border-gray-400 p-1">
+                </a>
+                <p class="text-sm m-0 mt-1">{{ $img->text }}</p>
+            </div>
+        @endforeach
     </div>
 </section>
 
 <div class="border-t-2 border-gray-200 my-16"></div>
 
 <section>
-    <h2 class="font-normal">Industrijski šator TIP 2 - PVC / LIM</h2>
+    @foreach($articles->where('category','tent_3') as $article)
+        <h2 class="font-normal">{{ $article->title }}</h2>
 
-    <p class="mb-6">
-    je model brzomontažnog objekta, kod kojega je pokrov izrađen od kvalitetne PVC cerade, stranice su od visokokvalitetnog trapeznog lima. Odlično prostorsko rješenje za skladištenje različitih materijala, strojeva i različitih proizvoda. Zbog trapeznih limova kao stranica objekta, dobivamo veću sigurnost od mogućih provala. Zbog trapeznih limova objekt nema toplinsku izolaciju, pa je moguća pojava kondnzacije i vlage. U slučaju većeg kondenzata i vlage lako postavimo antikondenzacijsku ceradu u donji dio konstrukcije. Brza dostava i montaža, te odličan omjer cijene i kvalitete, ovoj vrsti objekta daju najšire područje primjene i upotrebe.
-    </p>
+        <p>{{ $article->paragraph }}</p>
+    @endforeach
 
-    <div x-data="{}" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        <div>
-            <a  @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_2/tip2-1.jpg', imgModalDesc: 'Višenamjenski skladišni prostor' })" class="cursor-pointer">
-
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_2/tip2-1.jpg" alt="sator tip2-1 jpg">
-
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Višenamjenski skladišni prostor
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_2/tip2-2.jpg', imgModalDesc: 'Skladištenje željeznih proizvoda' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_2/tip2-2.jpg" alt="sator tip2-2 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladištenje željeznih proizvoda
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_2/tip2-4.jpg', imgModalDesc: 'Skladištenje proizvoda osjetljivih na vlagu' })" class="cursor-pointer"> 
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_2/tip2-4.jpg" alt="sator tip2-4 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladištenje proizvoda osjetljivih na vlagu
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_2/tip2-3.jpg', imgModalDesc: 'Skladište finog materijala' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_2/tip2-3.jpg" alt="sator tip2-3 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladište finog materijala
-            </p>
-        </div>
-    </div>
-</section>
-
-<div class="border-t-2 border-gray-200 my-16"></div>
-
-<section>
-    <h2 class="font-normal">Industrijski šator TIP 2 - PVC / PANEL</h2>
-
-    <p class="mb-6">
-        je zapravo toplinski izolirana brzomontažna hala. Stranice su od izoliranih sendvič panela, pokrov je od dvostruke PVC cerade, koja omogućava prolaz dnevne svjetlosti, te istodobno toplisnku i protukondenzacijsku zaštitu. Odlično rješenje za skladištenje osjetljivih materijala i proizvoda, pogodno za proizvodne pogone, montaže, servise i kombinacije poslovno-uredskih prostora. Panelne ploče zbog svoje tvrde strukture nude najviši stupanj sigurnosti u slučaju mogućih i neželjenih provala kao i neovlaštenog ulaza u sam prostor. Brza dostava, montaža i pojednostavljen postupak za dobivanje dozvola su dodatne prednosti objekata ovog tipa.
-    </p>
-
-    <div x-data="{}" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_3/tip3-1.jpg', imgModalDesc: ' Garažni i servisni prostor s toplinskom izolacijom' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_3/tip3-1.jpg" alt="sator tip3-1 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Garažni i servisni prostor s toplinskom izolacijom
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_3/tip3-2.jpg', imgModalDesc: 'Garaža za autobuse' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_3/tip3-2.jpg" alt="sator tip3-2 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Garaža za autobuse
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_3/tip3-3.jpg', imgModalDesc: 'Skladište' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_3/tip3-3.jpg" alt="sator tip3-3 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Skladište
-            </p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/sator_3/tip3-4.jpg', imgModalDesc: ' Dvosistemski skladišni objekt' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1 rounded" src="/assets/img/sator_3/tip3-4.jpg" alt="sator tip3-4 jpg">
-            </a>
-            <p class="text-sm m-0 mt-2">
-                Dvosistemski skladišni objekt
-            </p>
-        </div>
+    <div x-data="{}" class="grid grid-cols-4 gap-10">
+        @foreach($sator_3 as $img)
+            <div>
+                <a  @click="$dispatch('img-modal', {  imgModalSrc: '{{ $img->img_path }}', imgModalDesc: '{{ $img->text }}' })" class="cursor-pointer">
+                    <img src="{{ $img->img_path }}" alt="{{ $img->text }}" class="border border-gray-400 p-1">
+                </a>
+                <p class="text-sm m-0 mt-1">{{ $img->text }}</p>
+            </div>
+        @endforeach
     </div>
 </section>
 
@@ -219,7 +148,7 @@
         </table>
     </div>
 
-    <img class="w-full object-cover mt-2 mb-5" src="/assets/img/tehnicki_podaci/schema_tents.gif" alt="">
+    <img class="w-full object-cover my-10" src="/assets/img/cover/tents-industrial.jpg" alt="">
 
     <div class="flex">
         <ul class="list-decimal list-inside m-0 mr-10 md:mr-40">
@@ -273,194 +202,46 @@
             </tbody>
         </table>
 
-        <img src="/assets/img/tehnicki_podaci/shema_toplotnaizolacija_hr.gif" alt="">
+        <img src="/assets/img/cover/tents-industrial.jpg" alt="">
     </div>
 
-</section>
-
-<div class="border-t-2 border-gray-200 my-16"></div>
-
-<section>
-    <h2 class="mb-10 font-normal">Oprema</h2>
-
-    <div x-data="{}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema1.jpg', imgModalDesc: 'Klizna vrata od PVC cerade' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema1.jpg" alt="oprema 1 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Klizna vrata od PVC cerade</p>
-        </div>
-        <div>
-        <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema2.jpg', imgModalDesc: 'Klizna vrata od lima' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema2.jpg" alt="oprema 2 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Klizna vrata od lima</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema3.jpg', imgModalDesc: 'Podizna vrata - rolo ili sekcijska' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema3.jpg" alt="oprema 3 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Podizna vrata - rolo ili sekcijska</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema4.jpg', imgModalDesc: 'Postranična vrata za prolaz osoba' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema4.jpg" alt="oprema 4 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Postranična vrata za prolaz osoba</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema5.jpg', imgModalDesc: 'Okna i stranice iz prozorne folije' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema5.jpg" alt="oprema 5 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Okna i stranice iz prozorne folije</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema6.jpg', imgModalDesc: 'Dvokrilna staklena vrata' })" class="cursor-pointer">
-                <img src="/assets/img/oprema/oprema6.jpg" alt="oprema 6 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Dvokrilna staklena vrata</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema7.jpg', imgModalDesc: 'Stakleni prozori s podkonstrukcijome' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema7.jpg" alt="oprema 7 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Stakleni prozori s podkonstrukcijome</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema8.jpg', imgModalDesc: 'Protukondenzacijska cerada' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema8.jpg" alt="oprema 8 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Protukondenzacijska cerada</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema9.jpg', imgModalDesc: 'Sistemi za hlađenje ili grijanje' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema9.jpg" alt="oprema 9 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Sistemi za hlađenje ili grijanje</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema10.jpg', imgModalDesc: 'Električna rasvjeta' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema10.jpg" alt="oprema 10 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Električna rasvjeta</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema11.jpg', imgModalDesc: 'Mehanička zaštita nosivih stupova' })" class="cursor-pointer">
-                <img src="/assets/img/oprema/oprema11.jpg" alt="oprema 11 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Mehanička zaštita nosivih stupova</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/oprema/oprema12.jpg', imgModalDesc: 'Nadstrešnice' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/oprema/oprema12.jpg" alt="oprema 12 jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Nadstrešnice</p>
-        </div>
-    </div>
 </section>
 
 <div class="border-t-2 border-gray-200 my-10"></div>
 
 <section>
-    <h2 class="mb-10 font-normal">Primeri upotrebe</h2>
+    <h2 class="font-normal mb-10">Oprema</h2>
 
-    <div x-data="{}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div x-data="{}" class="grid grid-cols-4 gap-8">
+        @foreach($oprema as $o)
+
         <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba1.jpg', imgModalDesc: 'Skladištenje pakiranja za prehrambenu industriju' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba1.jpg" alt="Skladištenje pakiranja za prehrambenu industriju">
+            <a  @click="$dispatch('img-modal', {  imgModalSrc: '{{ $o->img_path }}', imgModalDesc: '{{ $o->text }}' })" class="cursor-pointer">
+                <img src="{{ $o->img_path }}" alt="{{ $o->text }}" class="border border-gray-400 p-1">
             </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje pakiranja za prehrambenu industriju</p>
+            <p class="text-sm m-0 mt-1">{{ $o->text }}</p>
         </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba2.jpg', imgModalDesc: 'Skladištenje tehničkih metalnih proizvoda' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba2.jpg" alt="Skladištenje tehničkih metalnih proizvoda jpg">
+
+        @endforeach
+    </div>
+</section>
+
+<div class="border-t-2 border-gray-200 my-16"></div>
+
+<section>
+    <h2 class="font-normal mb-10">Primeri upotrebe</h2>
+
+    <div class="grid grid-cols-4 gap-8">
+        @foreach($primer_upotrebe as $upotreba)
+
+        <div x-data='{}'>
+            <a  @click="$dispatch('img-modal', {  imgModalSrc: '{{ $upotreba->img_path }}', imgModalDesc: '{{ $upotreba->text }}' })" class="cursor-pointer">
+                <img src="{{ $upotreba->img_path }}" alt="{{ $upotreba->text }}" class="border border-gray-400 p-1">
             </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje tehničkih metalnih proizvoda</p>
+            <p class="text-sm m-0 mt-1">{{ $upotreba->text }}</p>
         </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba3.jpg', imgModalDesc: 'Skladišni prostori' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba3.jpg" alt="Skladišni prostori jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladišni prostori</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba4.jpg', imgModalDesc: 'Dvo ili više sistemska konstrukcija objekata' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba4.jpg" alt="Dvo ili više sistemska konstrukcija objekata jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Dvo ili više sistemska konstrukcija objekata</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba5.jpg', imgModalDesc: 'Visoka iskoristivost unutarnjeg prostora' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba5.jpg" alt="Visoka iskoristivost unutarnjeg prostora jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Visoka iskoristivost unutarnjeg prostora</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba6.jpg', imgModalDesc: 'Servisna radionica' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba6.jpg" alt="Servisna radionica jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Servisna radionica</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba7.jpg', imgModalDesc: 'Skladištenje guma' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba7.jpg" alt="Skladištenje guma jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje guma</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba8.jpg', imgModalDesc: 'Regalno skladište za različite proizvode' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba8.jpg" alt="Regalno skladište za različite proizvode jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Regalno skladište za različite proizvode</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba9.jpg', imgModalDesc: 'Trgovački šator' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba9.jpg" alt="Trgovački šator jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Trgovački šator</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba10.jpg', imgModalDesc: 'Skladištenje drvenih proizvoda' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba10.jpg" alt="Skladištenje drvenih proizvoda jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje drvenih proizvoda</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba11.jpg', imgModalDesc: 'Skladištenje osjetljivih električnih uređaja' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba11.jpg" alt="Skladištenje osjetljivih električnih uređaja jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje osjetljivih električnih uređaja</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba12.jpg', imgModalDesc: 'Prostor za montažu kampera' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba12.jpg" alt="Prostor za montažu kampera jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Prostor za montažu kampera</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba13.jpg', imgModalDesc: 'Garaža za autokampere i druga vozila' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba13.jpg" alt="Garaža za autokampere i druga vozila jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Garaža za autokampere i druga vozila</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba14.jpg', imgModalDesc: 'Pokrivni prostor za poljoprivrednu mehanizaciju' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba14.jpg" alt="Pokrivni prostor za poljoprivrednu mehanizaciju jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Pokrivni prostor za poljoprivrednu mehanizaciju</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba15.jpg', imgModalDesc: 'Skladištenje građevinskog materijala' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba15.jpg" alt="Skladištenje građevinskog materijala jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje građevinskog materijala</p>
-        </div>
-        <div>
-            <a @click="$dispatch('img-modal', {  imgModalSrc: '/assets/img/primeri_upotrebe/upotreba16.jpg', imgModalDesc: 'Skladištenje rasutih materijala' })" class="cursor-pointer">
-                <img class="border border-gray-400 p-1" src="/assets/img/primeri_upotrebe/upotreba16.jpg" alt="Skladištenje rasutih materijala jpg">
-            </a>
-            <p class="m-0 mt-2 text-sm">Skladištenje rasutih materijala</p>
-        </div>
+
+        @endforeach
     </div>
 </section>
 
