@@ -4,7 +4,7 @@ section: content
 title: Oprema
 description: This is your first blog post.
 categories: [feature]
-type: images
+type: coment page
 date: 2017-03-23
 images: 
   - url: /assets/img/cover/tents-industrial.jpg
