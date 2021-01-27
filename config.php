@@ -11,12 +11,6 @@ return [
 
     // collections
     'collections' => [
-        'articles',
-        'sator_1',
-        'sator_2',
-        'sator_3',
-        'oprema',
-        'primer_upotrebe',
         'posts' => [
             'author' => 'Author Name', // Default author, if not provided in a post
             'sort' => '-date',
